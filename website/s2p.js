@@ -44,15 +44,18 @@
      * @return {Scroll2Play}
      */
     Scroll2Play.prototype.load = function s2p_load() {
+        console.log("load");
         var that = this,
             loaded = 0,
             error = false;
 
         for (var i = 0; i < this.imgsCount; i++) {
-            that.xhrs[i] = xhr();
+            that.xhrs[i] = xhr(i);
+            console.log("working");
         }
 
-        function xhr() {
+        function xhr(i) {
+            console.log("getting");
             var req = new XMLHttpRequest();
             req.open('GET', that._getImgUrl(that.lowResImgsUrl, i), true);
             req.responseType = 'blob';
